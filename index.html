@@ -15,10 +15,10 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md-4 ">
+            <div class="col-md-3">
                 <h1 class="title">GIPHHUB</h1>
             </div>
-            <div class="col-md-4 search-dropdown">
+            <div class="col-md-3 search-dropdown">
                 <select class="form-control">
                     <option>Kanye</option>
                     <option>JAY-Z</option>
@@ -27,15 +27,27 @@
                     <option>BEYONCE</option>
                 </select>
             </div>
-            <div class="col-md-4 search-submit">
+            <div class="col-md-3 search-dropdown">
+                <input type="text" id="text-search" class="form-control" placeholder="giphy search">
+            </div>
+            <div class="col-md-3 search-submit">
                 <button type="button" class="btn btn-success">GET GIPHY WIT' IT</button>
             </div>
         </div>
     </div>
     <hr id="search-hr">
-    <form class="giphy-buttons" role="form">
-        <button type="submit" class="btn btn-primary giphy-button ">Submit</button>        
-    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 ">
+                <form class="giphy-buttons" role="form">
+                    <button type="submit" id="display-giphy-submit" class="btn btn-primary giphy-button ">Submit</button>        
+                </form>
+            </div>
+            <div id="giphy-display " class="col-md-8">
+
+            </div>
+        </div>
+    </div>
 
 
 
@@ -45,11 +57,11 @@
 
 
 
-<nav class="navbar fixed-bottom navbar-default trivia-game-navbar">
-    <footer id="trivia-game-footer" class="navbar-text">
-        YET ANOTHER COPYRIGHT DATE TEST
+
+    <footer id="giphhub-footer" class="navbar-text">
+        <p id="footer-text">YET ANOTHER COPYRIGHT DATE TEST</p>
     </footer>
-</nav>
+
 
 
     <script src="assets/javascript/giphy.js"></script>
