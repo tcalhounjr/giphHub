@@ -1,0 +1,33 @@
+.title {
+    text-align: left;
+    font-size: 40px;
+    padding: 0em;
+}
+
+.search-dropdown {
+    margin-top: 2rem;
+}
+
+.search-submit {
+    margin-top: 2rem;
+}
+
+.giphy-button {
+    margin-left: 40px;
+    margin-bottom: 40px;
+}
+
+.trivia-game-navbar {
+    margin-bottom: 0;
+}
+
+#trivia-game-footer {
+    color: black;
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+}
+
+#search-hr {
+    height: 1px;
+}
