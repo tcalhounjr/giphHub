@@ -10,59 +10,74 @@
     <link rel="icon" href="assets/images/favicon/tcjr-brand.png" type="image/gif">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 </head>
 <body onload="getCopyrightDate();">
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3">
-                <h1 class="title">GIPHHUB</h1>
-            </div>
-            <div class="col-md-3 search-dropdown">
-                <select class="form-control">
-                    <option>Kanye</option>
-                    <option>JAY-Z</option>
-                    <option>RHIANNA</option>
-                    <option>DRAKE</option>
-                    <option>BEYONCE</option>
-                </select>
-            </div>
-            <div class="col-md-3 search-dropdown">
-                <input type="text" id="text-search" class="form-control" placeholder="giphy search">
-            </div>
-            <div class="col-md-3 search-submit">
-                <button type="button" class="btn btn-success">GET GIPHY WIT' IT</button>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h1 class="title">GIPHHUB</h1>
+                </div>
+                <div class="col-md-3 search">
+                    <select class="form-control">
+                        <option value="" selected disabled>parental giphy rating filter</option>
+                        <option>Kanye</option>
+                        <option>JAY-Z</option>
+                        <option>RHIANNA</option>
+                        <option>DRAKE</option>
+                        <option>BEYONCE</option>
+                    </select>
+                </div>
+                <div class="col-md-3 search">
+                    <input type="text" id="text-search" class="form-control" placeholder="enter search terms">
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-success search-button">GET GIPHY WIT' IT</button>
+                </div>
             </div>
         </div>
-    </div>
+    </section>  
     <hr id="search-hr">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 ">
-                <form class="giphy-buttons" role="form">
-                    <button type="submit" id="display-giphy-submit" class="btn btn-primary giphy-button ">Submit</button>        
-                </form>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 giphy-display-buttons">
+                    <form class="giphy-buttons" role="form">
+                        <button type="submit" id="giphy-display-submit" class="btn btn-primary giphy-button ">Submit</button>   
+                        <button type="submit" id="giphy-display-submit" class="btn btn-primary giphy-button ">Submit</button>
+                        <button type="submit" id="giphy-display-submit" class="btn btn-primary giphy-button ">Submit</button>
+                        <button type="submit" id="giphy-display-submit" class="btn btn-primary giphy-button ">Submit</button>
+                        <button type="submit" id="giphy-display-submit" class="btn btn-primary giphy-button ">Submit</button>
+                        <button type="submit" id="giphy-display-submit" class="btn btn-primary giphy-button ">Submit</button>
+                        <button type="submit" id="giphy-display-submit" class="btn btn-primary giphy-button ">Submit</button>
+                        <button type="submit" id="giphy-display-submit" class="btn btn-primary giphy-button ">Submit</button>
+                        <button type="submit" id="giphy-display-submit" class="btn btn-primary giphy-button ">Submit</button>
+                        <button type="submit" id="giphy-display-submit" class="btn btn-primary giphy-button ">Submit</button>   
+                    </form>
+                </div>
             </div>
-            <div id="giphy-display " class="col-md-8">
-
+        <hr id="giphy-hr">
+        <div class="row">
+            <div class="col-md-12 giphy-display-images">
+                <img class="giphy-images" src="assets/images/test/tcjr.jpg" title="Rated: Y">
+                <img class="giphy-images" src="assets/images/test/tcjr.jpg" title="Rated: Y">
+                <img class="giphy-images" src="assets/images/test/tcjr.jpg" title="Rated: Y">
+                <img class="giphy-images" src="assets/images/test/tcjr.jpg" title="Rated: Y">
+                <img class="giphy-images" src="assets/images/test/tcjr.jpg" title="Rated: Y">
+                <img class="giphy-images" src="assets/images/test/tcjr.jpg" title="Rated: Y">
+                <img class="giphy-images" src="assets/images/test/tcjr.jpg" title="Rated: Y">
+                <img class="giphy-images" src="assets/images/test/tcjr.jpg" title="Rated: Y">
+                <img class="giphy-images" src="assets/images/test/tcjr.jpg" title="Rated: Y">
+                <img class="giphy-images" src="assets/images/test/tcjr.jpg" title="Rated: Y">
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-    <footer id="giphhub-footer" class="navbar-text">
-        <p id="footer-text">YET ANOTHER COPYRIGHT DATE TEST</p>
-    </footer>
-
-
+    
+    <section class="giphhub-footer-section">
+        <footer id="giphhub-footer" class="navbar-text">
+            <p id="footer-text">YET ANOTHER COPYRIGHT DATE TEST</p>
+        </footer>
+    </section>
 
     <script src="assets/javascript/giphy.js"></script>
 </body>
