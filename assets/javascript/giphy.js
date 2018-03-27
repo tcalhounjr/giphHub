@@ -22,11 +22,15 @@ function writeToScreen(parentTag, array) {
             console.log(i);
         }
         else if (parentTag === imgDivHTML) {
-            var imgObject = $("<img class='giphy-images' src='assets/images/test/tcjr.jpg' title='Rated: Y'>");
+            var imgSource = array[i].images.fixed_height.url;
+            var imgRating = array[i].rating;
+            var imgObject = $("<img class='giphy-images'>");
             imgObject.attr('id', array[i] + '-' + i);
+            imgObject.attr('src',imgSource);
+            imgObject.attr('title',imgRating);
             imgObject.appendTo(parentTag);
             imgObject.text(array[i]);
-            console.log(i);
+            console.log(imgSource);
         }
         else {
             var optionObject = $('<option>');
@@ -60,7 +64,7 @@ function fetchGIFs (query) {
         url: query,
         method: "GET"
       }).then(function(response) {
-        var giphyImgArray = response;
+        var giphyImgArray = response.data;
         console.log(giphyImgArray);
         writeToScreen(imgDivHTML, giphyImgArray);
     });
