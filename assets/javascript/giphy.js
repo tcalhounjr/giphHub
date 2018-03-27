@@ -62,7 +62,7 @@ function fetchGIFs (query) {
       }).then(function(response) {
         var giphyImgArray = response;
         console.log(giphyImgArray);
-        writeToScreen(imgDivHTML, imgObject, giphyImgArray);
+        writeToScreen(imgDivHTML, giphyImgArray);
     });
 }
 
