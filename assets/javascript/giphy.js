@@ -13,13 +13,21 @@ function writeToScreen(parentTag, childObject, array) {
 
     $(parentTag).empty();
     for (var i = 0; i < array.length; i++) {
-        $(parentTag).append(childObject);
-        $(childObject).text(i);
+        var jQueryObject = childObject;
+        jQueryObject.appendTo(parentTag);
+        jQueryObject.text(array[i]);
         console.log(i);
+
+        if (parentTag === btnDivHTML) {
+            childObject.attr('id', array[i]);
+        }
+        else if (parentTag === imgDivHTML) {
+            childObject.attr('id', array[i] + '-' + i);
+        }
     }
 }
 
-function initializeGiphyValues (callback) {
+function initializeGiphyValues () {
     
     database.ref('giphyObject').on('value', function(snapshot) {
         giphyObject = snapshot.val();
@@ -29,16 +37,23 @@ function initializeGiphyValues (callback) {
         console.log(giphyImgLimit);
     });
     
-    database.ref('giphyRatings').on('value', function(snapshot) {
-        
+    database.ref('giphyRatings').on('value', function(snapshot) { 
         giphyRatingsArray = snapshot.val();
         console.log(giphyRatingsArray);
-        
-        for (var i = 0; i < giphyRatingsArray.length; i++) {
-            console.log(giphyRatingsArray[i]);
-        }
     });
-    setTimeout(function () {writeToScreen(selectHTML, optionObject, giphyRatingsArray);}, 70);
+}
+
+function fetchGIFs (query) {
+
+    $.ajax({
+        url: gdpQueryURL,
+        method: "GET"
+      }).then(function(response) {
+        countryGDP = response[1][0].value;
+        console.log(response);
+        console.log("GDP IS ", countryGDP);
+        writeToScreen(gdpHTML, countryGDP.toLocaleString());
+    });
 }
 
 //INITIALIZE FIREBASE CONNECTION TO ACCESS 
@@ -61,35 +76,52 @@ const buttonObject = $("<button type='submit' class='btn btn-primary giphy-butto
 const optionObject = $('<option>');
 
 //parent HTML tags for jQuery objects
-const btnFormHTML = '#giphy-buttons';
+const btnDivHTML = '.giphy-display-buttons';
 const selectHTML = '.giphy-ratings';
-const divHTML = '.giphy-display-buttons';
+const imgDivHTML = '.giphy-display-images';
 
 //get HTML tag info for event listeners
-const giphyDisplayHTML = "#giphy-display-submit1";
 const searchBtnHTML = '.search-button';
 const textBoxHTML = '#search-text';
+const giphyBtn = '.giphy-button';
 
-var database = firebase.database();
+//set GIPHY query URL 
+var giphyQueryURL = "https://api.giphy.com//v1/gifs/search?";
 var giphyButtonsArray = ["KANYE", "JAY-Z", "BEYONCE", "RIHANNA", "DRAKE"];
+
+//declare DB vars
+var database = firebase.database();
 var giphyObject = {};
 var giphyAPIKey = "";
 var giphyImgLimit = 0;
 var giphyRatingsArray = [];
 
+initializeGiphyValues();
+
 $(document).ready(function() {
     
-    initializeGiphyValues();
-
+    setTimeout(function () {writeToScreen(selectHTML, optionObject, giphyRatingsArray);}, 500);
+    writeToScreen(btnDivHTML, buttonObject, giphyButtonsArray);
+    
     $(searchBtnHTML).on("click", function(event) {
         event.preventDefault();
+        var searchString = $(textBoxHTML).val().trim();
+        var searchFilter = $(selectHTML).val();
+        giphyButtonsArray.push(searchString);
+        writeToScreen(btnDivHTML, buttonObject, giphyButtonsArray);
+        giphyQueryURL += 'api_key=' + giphyAPIKey + '&limit=' + giphyImgLimit + '&q=' + searchString + '&rating=' + searchFilter;
+        console.log(giphyQueryURL);
         console.log('This is the giphy search array ', $(textBoxHTML).val());
 
     });
 
-    $(giphyDisplayHTML).on("click", function(event) {
+    $(giphyBtn).on("click", function(event) {
         event.preventDefault();
-        console.log('This is the giphy search array ', giphyArray);
+        var searchString = $(this).text();
+        var searchFilter = $(selectHTML).val();
+        giphyQueryURL += 'api_key=' + giphyAPIKey + '&limit=' + giphyImgLimit + '&q=' + searchString + '&rating=' + searchFilter;
+        writeToScreen(imgDivHTML, imgObject, giphyButtonsArray);
+        console.log('New query string: ', giphyQueryURL);
     });
 
 });

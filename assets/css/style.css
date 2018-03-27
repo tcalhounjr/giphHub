@@ -15,6 +15,11 @@
     border: none;
 }
 
+button.search-button:hover {
+    background-color: darkgray;
+    color: #951218;
+}
+
 .giphy-button {
     margin-left: 20px;
     margin-bottom: 20px;
@@ -43,7 +48,7 @@ button.giphy-button:hover {
 
 .giphy-images {
     height: 200px;
-    width: 300px;
+    width: 320px;
     border: 1px solid #951218;
     margin-right: 10px;
     margin-bottom: 20px;
@@ -51,6 +56,10 @@ button.giphy-button:hover {
 
 .giphhub-footer-section {
     margin-top: 100px;
+}
+
+#search-filter {
+    width: 100px;
 }
 
 #giphhub-footer {
