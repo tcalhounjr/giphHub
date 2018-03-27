@@ -7,10 +7,15 @@ function getCopyrightDate() {
 
 function writeToScreen(parentTag, childObject, array) {
     console.log(array);
+    console.log(array.length);
+    console.log(parentTag);
+    console.log(childObject);
+
     $(parentTag).empty();
     for (var i = 0; i < array.length; i++) {
         $(parentTag).append(childObject);
-        $(childObject).text(array[i]);
+        $(childObject).text(i);
+        console.log(i);
     }
 }
 
@@ -33,7 +38,7 @@ function initializeGiphyValues (callback) {
             console.log(giphyRatingsArray[i]);
         }
     });
-    callback();
+    setTimeout(function () {writeToScreen(selectHTML, optionObject, giphyRatingsArray);}, 70);
 }
 
 //INITIALIZE FIREBASE CONNECTION TO ACCESS 
@@ -74,9 +79,7 @@ var giphyRatingsArray = [];
 
 $(document).ready(function() {
     
-    initializeGiphyValues(function () {
-        writeToScreen(selectHTML,optionObject,giphyRatingsArray);
-    });
+    initializeGiphyValues();
 
     $(searchBtnHTML).on("click", function(event) {
         event.preventDefault();
