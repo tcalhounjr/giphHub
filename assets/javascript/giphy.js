@@ -127,7 +127,7 @@ $(document).ready(function() {
         var searchString = $(this).text();
         var searchFilter = $(selectHTML).val();
         console.log(searchFilter);
-        var giphyQueryURL = "https://api.giphy.com//v1/gifs/search?" + 'api_key=' + giphyAPIKey + '&q=' + searchString + '&limit=' + giphyImgLimit + '&offset=0' + '&rating=' + searchFilter;
+        var giphyQueryURL = "https://api.giphy.com/v1/gifs/search?" + 'api_key=' + giphyAPIKey + '&q=' + searchString + '&limit=' + giphyImgLimit + '&offset=0' + '&rating=' + searchFilter;
         console.log('New query string: ', giphyQueryURL);
         fetchGIFs(giphyQueryURL);
     });
