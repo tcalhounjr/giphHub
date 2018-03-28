@@ -126,7 +126,7 @@ $(document).ready(function() {
         writeToScreen(btnDivHTML, giphyButtonsArray);
     });
 
-    $(giphyBtn).on("click", function(event) {
+    $('body').on("click", giphyBtn, function(event) {
         event.preventDefault();
         var searchString = $(this).text();
         var searchFilter = $(selectHTML).val();
